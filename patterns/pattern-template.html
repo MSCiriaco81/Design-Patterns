@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pattern — Design Patterns</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Prism.js stylesheet (code highlighting) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha512-Zx9lQk0r1Yqv5B6b3x8X2z8JY7iQ0Qn3xQ9f3K1c9yK7qGf7ZsD8y3Q7Kp1FQ6z0a1V+y5j8k2F1gZ7Qm1a2RQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Prism.js core + language components -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html">Design Patterns</a>
+      <nav class="main-nav">
+        <a href="../criacionais.html">Criacionais</a>
+        <a href="../estruturais.html">Estruturais</a>
+        <a href="../comportamentais.html">Comportamentais</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1 id="pattern-title" data-field="titulo"></h1>
+
+      <div style="margin-top:8px">
+        <a id="github-button" class="btn" target="_blank" rel="noopener">Ver código no GitHub →</a>
+      </div>
+
+      <section class="meta">
+        <h2>Resumo</h2>
+        <p class="muted" data-field="descricao-simples"></p>
+      </section>
+
+      <section class="explain">
+        <h2>Explicação detalhada</h2>
+        <p data-field="descricao-detalhada"></p>
+      </section>
+
+      <section class="when">
+        <h3>Quando usar</h3>
+        <p data-field="quando-usar"></p>
+      </section>
+
+      <section class="when-not">
+        <h3>Quando NÃO usar</h3>
+        <p data-field="quando-nao-usar"></p>
+      </section>
+
+      <section class="pros-cons">
+        <h3>Vantagens</h3>
+        <ul data-field="vantagens"></ul>
+        <h3>Desvantagens</h3>
+        <ul data-field="desvantagens"></ul>
+      </section>
+
+      <section class="uml-diagram-section">
+        <h2>Diagrama UML</h2>
+        <img id="uml-image" class="uml-diagram" alt="UML do pattern" />
+
+        <div class="uml-explanation">
+          <h3>Explicação do UML</h3>
+
+          <p data-field="uml-intro"></p>
+
+          <h4>1. Nome da classe</h4>
+          <p data-field="uml-nome-classe"></p>
+
+          <h4>2. Atributos</h4>
+          <p data-field="uml-atributos"></p>
+
+          <h4>3. Métodos</h4>
+          <p data-field="uml-metodos"></p>
+
+          <h4>4. Elementos adicionais</h4>
+          <p data-field="uml-extra"></p>
+        </div>
+      </section>
+
+      <section class="code-examples">
+        <h3>Exemplos de código</h3>
+        <div class="tabs">
+          <button class="tab-btn active" data-target="#code-block" data-lang="java">Java</button>
+          <button class="tab-btn" data-target="#code-block" data-lang="js">JavaScript</button>
+          <button class="tab-btn" data-target="#code-block" data-lang="python">Python</button>
+        </div>
+
+        <div class="code-blocks">
+          <pre><code id="code-block" class="language-java"></code></pre>
+        </div>
+        
+        <section id="code-explanation-section">
+          <h2>Explicação do código</h2>
+          <p id="code-explanation" class="muted"></p>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/header-fix.js"></script>
+  <!-- Prism.js for syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-2Qk8XQnj8k3Z6Qm5Qk3V6o4qL5k3Y8vT2aFv9Zp1qW0g9b3pR8c3mK6t1v9X6oZlQ3k6a4R1A2b3C4D5E6F7G==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="module" src="../js/tabs.js"></script>
+</body>
+</html>

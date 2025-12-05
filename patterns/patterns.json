@@ -1,0 +1,29 @@
+{
+  "Singleton": {
+    "categoria": "Criacionais",
+    "github": "patterns/Criacionais/Singleton",
+    "descricaoSimples": "Garante que uma classe tenha apenas uma instância.",
+    "descricaoDetalhada": "O Singleton controla a criação de uma única instância de uma classe e fornece um ponto global de acesso a ela. Útil quando é necessário garantir um único recurso compartilhado, como um gerenciador de conexão ou configuração.",
+    "quandoUsar": "Quando você precisa de exatamente uma instância de uma classe e um ponto de acesso global a ela.",
+    "quandoNaoUsar": "Quando múltiplas instâncias são necessárias, ou quando o uso do singleton prejudica testabilidade ou introduz acoplamento global.",
+    "vantagens": ["Controle de instância única","Acesso global ao recurso"],
+    "desvantagens": ["Dificulta testes unitários","Pode criar acoplamento implícito"],
+    "uml": "Criacionais/Singleton/singleton.svg",
+    "umlIntro": "O diagrama UML mostra a estrutura do Singleton: uma classe com uma única instância acessível globalmente.",
+    "umlNomeClasse": "A caixa superior representa a classe 'Singleton' — a entidade que controla o acesso à instância única.",
+    "umlAtributos": "- uniqueInstance : Singleton — atributo privado e estático que guarda a instância única.",
+    "umlMetodos": "+ getInstance() : Singleton — método público que retorna a instância única;\n+ businessMethod() : void — exemplo de método de negócio exposto pela classe.",
+    "umlExtra": "O construtor deve ser privado para impedir instanciação externa; o atributo 'uniqueInstance' pode ser inicializado lazy ou eager, dependendo da necessidade.",
+    "codigo": {
+      "java": "package patterns.codes.Criacionais.Singleton;\n\npublic class Logger {\n\n    // ÚNICA instância do Logger (privada para impedir acesso externo)\n    private static Logger instance;\n\n    // Construtor privado impede new Logger()\n    private Logger() {}\n\n    // Método global de acesso à instância\n    public static Logger getInstance() {\n        if (instance == null) {\n            instance = new Logger();\n        }\n        return instance;\n    }\n\n    // Método público de log\n    public void log(String message) {\n        System.out.println(\"[LOG] \" + message);\n    }\n}\n\n// Uso:\n// Logger logger = Logger.getInstance();\n// logger.log(\"Mensagem de log\");",
+      "js": "class Logger {\n  \n  // Guarda a instância única\n  static instance = null;\n\n  // Construtor privado \"simulado\": JS não tem private real aqui, mas dá pra evitar new direto\n  constructor() {\n    if (Logger.instance) {\n      return Logger.instance;\n    }\n    Logger.instance = this;\n  }\n\n  // Método de log\n  log(message) {\n    console.log(`[LOG] ${message}`);\n  }\n\n  // Método estático que retorna a instância única\n  static getInstance() {\n    if (!Logger.instance) {\n      Logger.instance = new Logger();\n    }\n    return Logger.instance;\n  }\n}\n\n// Uso:\nconst logger = Logger.getInstance();\nlogger.log(\"Servidor iniciado\");",
+      "python": "class Logger:\n    _instance = None\n\n    def __new__(cls):\n        # Garante instância única\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n\n    def log(self, message):\n        print(f\"[LOG] {message}\")\n# Uso:\n# logger = Logger.getInstance()\n# logger.log(\"Mensagem de log\")"
+    }
+    ,
+    "explicacaoCodigo": {
+      "java": "Neste exemplo Java, a classe `Logger` implementa o padrão Singleton garantindo que apenas uma instância exista. O construtor é privado para evitar instanciação externa, e o método estático `getInstance()` cria a instância de forma lazy (quando necessário) e a retorna. O método `log` é um exemplo de funcionalidade exposta pela instância única.",
+      "js": "No exemplo JavaScript, `Logger` simula um singleton usando um campo estático `instance`. O construtor retorna a instância já existente se ela já foi criada. O método estático `getInstance()` garante que sempre haja apenas uma instância; o método `log` demonstra uso da instância compartilhada.",
+      "python": "A versão em Python utiliza o método especial `__new__` para controlar a criação da instância: a primeira vez que a classe é instanciada, `_instance` é setada; nas chamadas seguintes, a mesma instância é retornada. O método `log` mostra como expor comportamento através da instância única."
+    }
+  }
+}

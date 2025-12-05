@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Criacionais — Design Patterns</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Design Patterns</a>
+      <nav class="main-nav">
+        <a href="criacionais.html">Criacionais</a>
+        <a href="estruturais.html">Estruturais</a>
+        <a href="comportamentais.html">Comportamentais</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Criacionais</h1>
+      <p>Os padrões criacionais lidam com a criação de objetos. Eles abstraem o processo de instanciação e tornam o sistema independente de como seus objetos são criados, compostos e representados.</p>
+
+      <section class="list">
+        <div class="pattern-list">
+          <a class="pattern-card" href="patterns/pattern-template.html#Singleton" data-pattern="Singleton">
+            <div class="pattern-card-title">Singleton</div>
+            <div class="pattern-card-desc">Garante que uma classe tenha apenas uma instância.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Factory%20Method" data-pattern="Factory Method">
+            <div class="pattern-card-title">Factory Method</div>
+            <div class="pattern-card-desc">Define uma interface para criar um objeto, deixando suas subclasses decidirem qual classe instanciar.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Abstract%20Factory" data-pattern="Abstract Factory">
+            <div class="pattern-card-title">Abstract Factory</div>
+            <div class="pattern-card-desc">Fornece uma interface para criar famílias de objetos relacionados sem especificar suas classes concretas.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Builder" data-pattern="Builder">
+            <div class="pattern-card-title">Builder</div>
+            <div class="pattern-card-desc">Separa a construção de um objeto complexo de sua representação, permitindo variações passo a passo.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Prototype" data-pattern="Prototype">
+            <div class="pattern-card-title">Prototype</div>
+            <div class="pattern-card-desc">Cria novos objetos clonando uma instância-protótipo existente.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+        </div>
+      </section>
+
+      <script>
+        // Preenche descrições a partir de patterns/patterns.json quando disponível
+        (async function(){
+          try{
+            const res = await fetch('patterns/patterns.json');
+            if(!res.ok) return;
+            const data = await res.json();
+            const GITHUB_USER = 'USERNAME';
+            const GITHUB_REPO = 'REPO';
+            document.querySelectorAll('.pattern-card').forEach(a=>{
+              const key = a.getAttribute('data-pattern');
+              if(!key) return;
+              const p = data[key];
+              if(p && p.descricaoSimples){
+                const el = a.querySelector('.pattern-card-desc');
+                if(el) el.textContent = p.descricaoSimples;
+              }
+              // set per-card github link if available
+              const gitEl = a.querySelector('.pattern-card-github');
+              if(gitEl) {
+                if(p && p.github) {
+                  gitEl.href = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/tree/main/${p.github}`;
+                  gitEl.style.display = 'inline-block';
+                } else {
+                  gitEl.style.display = 'none';
+                }
+              }
+            });
+          }catch(e){ /* silent */ }
+        })();
+      </script>
+    </div>
+  </main>
+
+  <script src="js/header-fix.js"></script>
+</body>
+</html>

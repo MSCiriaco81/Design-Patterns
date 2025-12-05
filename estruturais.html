@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Estruturais — Design Patterns</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Design Patterns</a>
+      <nav class="main-nav">
+        <a href="criacionais.html">Criacionais</a>
+        <a href="estruturais.html">Estruturais</a>
+        <a href="comportamentais.html">Comportamentais</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Estruturais</h1>
+      <p>Os padrões estruturais preocupam-se com a composição de classes e objetos para formar estruturas maiores, que são flexíveis e fáceis de estender.</p>
+
+      <section class="list">
+        <div class="pattern-list">
+          <a class="pattern-card" href="patterns/pattern-template.html#Adapter" data-pattern="Adapter">
+            <div class="pattern-card-title">Adapter</div>
+            <div class="pattern-card-desc">Converte a interface de uma classe em outra que o cliente espera.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Decorator" data-pattern="Decorator">
+            <div class="pattern-card-title">Decorator</div>
+            <div class="pattern-card-desc">Adiciona responsabilidades a objetos dinamicamente sem alterar sua estrutura.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Facade" data-pattern="Facade">
+            <div class="pattern-card-title">Facade</div>
+            <div class="pattern-card-desc">Fornece uma interface unificada para um conjunto de interfaces em um subsistema.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Proxy" data-pattern="Proxy">
+            <div class="pattern-card-title">Proxy</div>
+            <div class="pattern-card-desc">Fornece um substituto para controlar o acesso a outro objeto.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+
+          <a class="pattern-card" href="patterns/pattern-template.html#Composite" data-pattern="Composite">
+            <div class="pattern-card-title">Composite</div>
+            <div class="pattern-card-desc">Compõe objetos em estruturas de árvore e trata composições e itens uniformemente.</div>
+            <a class="pattern-card-github" href="#" target="_blank">Ver no GitHub →</a>
+          </a>
+        </div>
+      </section>
+
+      <script>
+        (async function(){
+          try{
+            const res = await fetch('patterns/patterns.json');
+            if(!res.ok) return;
+            const data = await res.json();
+            const GITHUB_USER = 'USERNAME';
+            const GITHUB_REPO = 'REPO';
+            document.querySelectorAll('.pattern-card').forEach(a=>{
+              const key = a.getAttribute('data-pattern');
+              if(!key) return;
+              const p = data[key];
+              if(p && p.descricaoSimples){
+                const el = a.querySelector('.pattern-card-desc');
+                if(el) el.textContent = p.descricaoSimples;
+              }
+              const gitEl = a.querySelector('.pattern-card-github');
+              if(gitEl) {
+                if(p && p.github) {
+                  gitEl.href = `https://github.com/${GITHUB_USER}/${GITHUB_REPO}/tree/main/${p.github}`;
+                  gitEl.style.display = 'inline-block';
+                } else {
+                  gitEl.style.display = 'none';
+                }
+              }
+            });
+          }catch(e){ }
+        })();
+      </script>
+    </div>
+  </main>
+
+  <script src="js/header-fix.js"></script>
+</body>
+</html>
